@@ -1,3 +1,95 @@
+Nandeesh, I would not choose Australia Post as my primary portfolio project unless you already know the domain well.
+
+For interview/demo projects, the goal is not just automation. The goal is to showcase:
+
+Framework design
+Page Object Model
+API + UI validation
+Data-driven testing
+Reporting
+CI/CD integration
+Test strategy thinking
+
+Australia Post has some challenges:
+
+Many flows require account creation or real addresses.
+Delivery-related workflows can be difficult to validate end-to-end.
+UI changes frequently.
+Some important scenarios depend on external tracking systems.
+Better portfolio websites
+1. SauceDemo (Best for framework showcase)
+
+SauceDemo
+
+Automate:
+
+Login
+Product sorting
+Add to cart
+Checkout
+Order confirmation
+
+Interviewers know this site and immediately understand your test coverage.
+
+2. OrangeHRM (Best for real-world enterprise automation)
+
+OrangeHRM Demo
+
+Automate:
+
+Login
+Employee creation
+Search employee
+Update employee
+Delete employee
+
+Shows CRUD testing, which is very common in enterprise applications.
+
+3. Automation Exercise
+
+Automation Exercise
+
+Automate:
+
+Registration
+Login
+Product search
+Cart
+Checkout flow
+
+Very rich test scenarios.
+
+4. ParaBank (Excellent for API + UI)
+
+ParaBank Demo
+
+Automate:
+
+Registration
+Account creation
+Fund transfer
+Transaction history
+
+Looks much closer to a banking application.
+
+If you still want Australia Post
+
+Focus on these flows:
+
+Parcel tracking
+Postcode/location search
+Delivery calculator
+Login validations
+Navigation and content verification
+API testing of tracking endpoints (if available in test environment)
+
+Avoid:
+
+Real delivery workflows
+Payment flows
+Anything requiring actual parcel movement
+
+*********************************************************************************************
 Once you've finished the standard demo sites, I'd recommend moving to real public websites because they make your portfolio look closer to actual industry work.
 
 Here are some good choices, ranked by interview value:
