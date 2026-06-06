@@ -1,31 +1,91 @@
-# sentinelTS-playwright
-# 🎭 Playwright TypeScript Automation Framework
-🚀 A robust, type-safe end-to-end (E2E) testing framework engineered with **Playwright** and **TypeScript**. Designed for high execution speed, stability, and maintainability using the Page Object Model (POM) pattern.
+# 🎭 SentinelTS — Playwright Automation Framework
+
+> A robust, type-safe end-to-end (E2E) testing framework built with **Playwright** and **TypeScript**, designed for high execution speed, stability, and maintainability.
 
 ---
 
 ## 🚀 Features
 
-*   **Type-Safe Execution:** Written completely in TypeScript for excellent IDE auto-completion and compile-time error catching.
-*   **Page Object Model (POM):** Clean architectural separation of page selectors/actions and actual test verification logic.
-*   **Cross-Browser Testing:** Configured to run seamlessly across Chromium, Firefox, and WebKit platforms.
-*   **Advanced Reporting:** Built-in HTML reports and artifact collection (screenshots, videos, and traces) upon failures.
-*   **CI/CD Ready:** Headless execution profile structured to fit effortlessly into automation pipelines.
+- **Page Object Model (POM)** — Clean separation of page selectors, actions, and test logic
+- **Type-Safe** — Written fully in TypeScript for compile-time safety and IDE auto-completion
+- **Cross-Browser** — Runs across Chromium, Firefox, and WebKit
+- **API Testing** — REST API test coverage alongside UI automation
+- **CI/CD Ready** — GitHub Actions workflow for headless execution on every push
+- **Advanced Reporting** — HTML reports with screenshots, videos, and traces on failure
 
 ---
 
-## 🛠️ Prerequisites
+## 🛠️ Tech Stack
 
-Before getting started, ensure you have the following installed locally:
+| Tool | Purpose |
+|---|---|
+| Playwright | UI & API Automation |
+| TypeScript | Type-safe scripting |
+| Node.js | Runtime |
+| GitHub Actions | CI/CD Pipeline |
+| HTML Reporter | Test Reporting |
 
-*   **Node.js** (v18.x or higher recommended)
-*   **npm** (comes bundled with Node)
+---
+
+## 📁 Project Structure
+
+```
+sentinelTS-playwright/
+├── pages/              # Page Object Models
+├── tests/              # Test specs
+├── utils/              # Helper functions
+├── .github/workflows/  # CI/CD pipeline
+├── playwright.config.ts
+└── package.json
+```
 
 ---
 
 ## 📦 Installation
 
-1. **Clone the repository:**
 ```bash
-   git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-   cd your-repo-name
+# Clone the repository
+git clone https://github.com/NandeeshHM/sentinelTS-playwright.git
+cd sentinelTS-playwright
+
+# Install dependencies
+npm install
+
+# Install Playwright browsers
+npx playwright install
+```
+
+---
+
+## ▶️ Running Tests
+
+```bash
+# Run all tests
+npx playwright test
+
+# Run in headed mode
+npx playwright test --headed
+
+# Run specific test file
+npx playwright test tests/login.spec.ts
+
+# Run on specific browser
+npx playwright test --project=chromium
+```
+
+---
+
+## 📊 Reports
+
+```bash
+# Open HTML report after test run
+npx playwright show-report
+```
+
+---
+
+## 👤 Author
+
+**Nandeesh Hiremath**  
+Senior Automation Engineer | 13+ Years | Playwright | TypeScript | CI/CD  
+[GitHub](https://github.com/NandeeshHM)
