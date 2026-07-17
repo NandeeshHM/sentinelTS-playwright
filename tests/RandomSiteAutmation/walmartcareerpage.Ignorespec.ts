@@ -7,11 +7,11 @@ test.use({
     }
 });
 
-test.only("Walmart Career Page Automation", async({page})=> {
+test("Walmart Career Page Automation", async({page})=> {
 
     // Step 1: Launch
     await page.goto("https://tech.walmart.com/");
-    console.log("Title:", await page.title());
+    console.log("Title:", await page.title()); page.
 
     // Step 2: Search
     await page.locator('input#job-keyword').fill('SDET');
