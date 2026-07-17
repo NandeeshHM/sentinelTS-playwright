@@ -1,10 +1,13 @@
-class APiUtils {
-    constructor(apiContext, loginPayLoad) {
-        this.apiContext = apiContext;
-        this.loginPayLoad = loginPayLoad;
-    }
- 
-    async getToken() {
+import { APIRequestContext } from '@playwright/test';
+
+export type LoginPayload = { userEmail: string; userPassword: string };
+export type OrderPayload = { orders: { country: string; productOrderedId: string }[] };
+export type OrderResult = { token: string; orderId: string };
+
+export class APiUtils {
+    constructor(private apiContext: APIRequestContext, private loginPayLoad: LoginPayload) {}
+
+    async getToken(): Promise<string> {
         const loginResponse = await this.apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login", {
             data: this.loginPayLoad
         }); // 200, 201
@@ -13,25 +16,21 @@ class APiUtils {
         console.log(token);
         return token;
     }
- 
-    async createOrder(orderPayLoad) {
-        let response = {};
-        response.token = await this.getToken();
+
+    async createOrder(orderPayLoad: OrderPayload): Promise<OrderResult> {
+        const token = await this.getToken();
         const orderResponse = await this.apiContext.post("https://rahulshettyacademy.com/api/ecom/order/create-order", {
             data: orderPayLoad,
             headers: {
-                'Authorization': response.token,
+                'Authorization': token,
                 'Content-Type': 'application/json'
             }
         });
- 
+
         const orderResponseJson = await orderResponse.json();
         console.log(orderResponseJson);
         const orderId = orderResponseJson.orders[0];
-        response.orderId = orderId;
- 
-        return response;
+
+        return { token, orderId };
     }
 }
- 
-module.exports = { APiUtils };

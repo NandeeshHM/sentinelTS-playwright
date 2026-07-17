@@ -1,0 +1,65 @@
+PLAYWRIGHT + TYPESCRIPT AUTOMATION - DOS AND DON'TS
+=====================================================
+
+THINGS TO DO
+-------------
+1. Use role-based and user-facing locators (getByRole, getByLabel, getByText,
+   getByPlaceholder, getByTestId) instead of CSS/XPath selectors.
+2. Rely on Playwright's built-in auto-waiting and web-first assertions
+   (expect(locator).toBeVisible(), toHaveText(), etc.) instead of manual waits.
+3. Use the Page Object Model (POM) to keep locators and actions organized
+   and reusable across tests.
+4. Keep tests independent and isolated - each test should set up its own
+   state and not depend on other tests running first.
+5. Use fixtures to share setup/teardown logic (login, test data, browser
+   context) cleanly across test files.
+6. Use test.step() to break tests into readable, reportable steps.
+7. Use environment variables / config files for base URLs, credentials,
+   and environment-specific settings (never hardcode secrets).
+8. Run tests in parallel where possible and keep them fast and focused.
+9. Use trace viewer, screenshots, and videos on failure for debugging
+   (configured via playwright.config.ts).
+10. Write clear, descriptive test and describe block names that explain
+    intent ("should show error when login fails" not "test1").
+11. Use TypeScript types/interfaces for test data and page objects to
+    catch errors at compile time.
+12. Group related tests with test.describe() and use tags/annotations
+    for organizing (@smoke, @regression, etc.).
+13. Clean up test data / state after tests (API calls, DB cleanup, etc.)
+    when tests create persistent data.
+14. Use API calls for test setup (e.g. creating a user via API) instead
+    of doing it through the UI when it's not the thing under test.
+15. Keep assertions meaningful and specific - assert on the actual
+    outcome, not implementation details.
+
+THINGS NOT TO DO
+------------------
+1. Don't use hardcoded waits like page.waitForTimeout() to "fix" flaky
+   tests - fix the root cause (bad locator, missing wait condition).
+2. Don't use brittle CSS/XPath selectors tied to DOM structure or styling
+   classes that change often.
+3. Don't hardcode credentials, tokens, or environment URLs directly in
+   test files.
+4. Don't chain tests together (test B depending on test A's state) -
+   this causes cascading failures and makes debugging harder.
+5. Don't use global/shared mutable state between tests without proper
+   isolation (e.g. shared browser context across unrelated tests).
+6. Don't ignore flaky tests - investigate and fix them; don't just
+   retry-and-forget or skip them permanently.
+7. Don't put business logic or complex conditionals inside test files -
+   keep that in page objects/helpers.
+8. Don't use "any" type carelessly in TypeScript - define proper types
+   for page objects, fixtures, and test data.
+9. Don't take screenshots/videos for every run by default if not needed -
+   only capture on failure to keep CI fast and storage low.
+10. Don't overuse UI interactions for setup/teardown that could be done
+    faster via API or direct backend calls.
+11. Don't leave console.log()/debug code committed in test files.
+12. Don't write overly long single tests covering many scenarios -
+    split into focused, single-purpose tests.
+13. Don't skip error handling for expected failure scenarios - test
+    both happy paths and negative/edge cases.
+14. Don't commit .env files, auth state files, or secrets to version
+    control.
+15. Don't disable/bypass ESLint or TypeScript strict checks just to
+    make a test pass faster.

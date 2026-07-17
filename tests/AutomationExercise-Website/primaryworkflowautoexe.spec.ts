@@ -1,24 +1,18 @@
-import {test, expect} from '@playwright/test';
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '../../pages/AutomationExercise/LoginPage';
 
-test('Primary workflow automation', async({page}) => {
+test('Primary workflow automation', async ({ page }) => {
+    const loginPage = new LoginPage(page);
 
+    await loginPage.goto();
 
-await page.goto('https://automationexercise.com/');
+    const title = await page.title();
+    console.log('Title of the web page is :', title);
+    await expect(page).toHaveTitle(/Automation Exercise/);
 
-let title:string=await page.title();
-console.log('Title of the web page is :',title);
+    await loginPage.openLoginForm();
+    await loginPage.login('cvcardiologist@gmail.com', '123456');
 
-await expect(page).toHaveTitle(/Automation Exercise/);
-
-
-await page.locator('a[href="/login"]').click();
-
-await page.locator('[data-qa="login-email"]').fill('cvcardiologist@gmail.com');
-await page.getByPlaceholder('Password').fill('123456');
-
-await page.getByRole('button', { name: 'Login' }).click();
-
-let errorMessage = await page.locator('p').first().textContent();
-await expect(errorMessage).toContain('Your email or password is not valid');
-
+    const errorMessage = await loginPage.getErrorMessage();
+    expect(errorMessage).toContain('Your email or password is incorrect!');
 });
