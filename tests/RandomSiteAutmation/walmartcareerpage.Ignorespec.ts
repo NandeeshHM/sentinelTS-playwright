@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test'
 
 test.use({
-    viewport: null,
+    viewport: { width: 1920, height: 1080 },
     launchOptions: {
         args: ['--start-maximized']
     }
