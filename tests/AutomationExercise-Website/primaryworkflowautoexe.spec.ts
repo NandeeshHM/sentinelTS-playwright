@@ -13,6 +13,5 @@ test('Primary workflow automation', async ({ page }) => {
     await loginPage.openLoginForm();
     await loginPage.login('cvcardiologist@gmail.com', '123456');
 
-    const errorMessage = await loginPage.getErrorMessage();
-    expect(errorMessage).toContain('Your email or password is incorrect!');
+    await expect(loginPage.errorMessage).toContainText('Your email or password is incorrect!');
 });

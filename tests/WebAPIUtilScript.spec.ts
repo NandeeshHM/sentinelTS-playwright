@@ -2,7 +2,7 @@ import { test, expect, request } from '@playwright/test';
 import { APiUtils, OrderResult } from './utils/APiUtils';
 
 const loginPayLoad = { userEmail: "anshika@gmail.com", userPassword: "Iamking@000" };
-const orderPayLoad = { orders: [{ country: "Cuba", productOrderedId: "67a8dde5c0d3e6622a297cc8" }] };
+const orderPayLoad = { orders: [{ country: "Cuba", productOrderedId: "6960eae1c941646b7a8b3ed3" }] };
 
 let response: OrderResult;
 

@@ -14,7 +14,7 @@ export class LoginPage {
         this.emailInput = page.locator('[data-qa="login-email"]');
         this.passwordInput = page.getByPlaceholder('Password');
         this.loginButton = page.getByRole('button', { name: 'Login' });
-        this.errorMessage = page.locator('p').first();
+        this.errorMessage = page.locator('.login-form p');
     }
 
     async goto() {
@@ -29,9 +29,5 @@ export class LoginPage {
         await this.emailInput.fill(email);
         await this.passwordInput.fill(password);
         await this.loginButton.click();
-    }
-
-    async getErrorMessage(): Promise<string | null> {
-        return this.errorMessage.textContent();
     }
 }
